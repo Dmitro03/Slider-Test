@@ -1,285 +1,306 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Slider</title>
-    <style>
-        /* Загальні стилі для всіх розмірів екранів */
-        body {
-            padding: 0;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Загальний контейнер для слайдера */
-        #slider-container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        #sound {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            z-index: 20;
-        }
-
-        /* Слайди */
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            z-index: 0;
-        }
-
-        /* Активний слайд */
-        .slide.active {
-            opacity: 1;
-            z-index: 1;
-        }
-
-        /* Відео всередині слайдів */
-        .slide video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Контейнер для пагінації */
-        #pagination {
-            display: flex;
-            align-items: center;
-            z-index: 10;
-            transition: all 300ms ease;
-            gap: 10px;
-        }
-
-        .center {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            transition: all 300ms ease;
-            width: 68px;
-        }
-
-        /* Кнопки пагінації */
-        .pagination-button {
-            min-width: 58px;
-            height: 40px;
-            border: 1px solid #fff;
-            background: transparent;
-            position: relative;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            aspect-ratio: 1 / 1;
-            align-items: center;
-            transition: all 0.3s ease, all 0.3s ease;
-        }
-
-        .pagination-button.active {
-            transform: scale(1.2);
-            margin-left: 5px;
-            margin-right: 5px;
-        }
-
-        /* Таймлайн, який буде відображатися лише для активного слайда */
-        .timeline {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background-color: #666;
-            display: none;
-        }
-
-        .pagination-button.active .timeline {
-            display: block;
-        }
-
-        .timeline-progress {
-            height: 100%;
-            width: 0%;
-            background-color: #fff;
-        }
-
-        .pause-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transition: all 300ms ease;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            clip-path: polygon(0 0, 0 100%, 100% 50%);
-            display: none;
-        }
-
-        .pagination-button.active .pause-button {
-            display: block;
-        }
-    </style>
-</head>
-<body>
+    </head>
 <div id="slider-container">
-    <button id="sound">Sound</button>
-    <div id="slides-container">
-        <div class="slide active">
-            <video playsinline muted src="https://dmitro03.github.io/Auto-Form/P1-Harpoon-Agency-AutoScribe-Mutuo-Health-Solutions-Subtitled.mp4"></video>
-        </div>
-        <div class="slide">
-            <video playsinline muted src="https://dmitro03.github.io/Auto-Form/P1-Harpoon-Agency-AutoScribe-Mutuo-Health-Solutions-Subtitled.mp4"></video>
-        </div>
-        <div class="slide">
-            <video playsinline muted src="https://dmitro03.github.io/Auto-Form/P1-Harpoon-Agency-AutoScribe-Mutuo-Health-Solutions-Subtitled.mp4"></video>
-        </div>
-        <div class="slide">
-            <video playsinline muted src="https://dmitro03.github.io/Auto-Form/P1-Harpoon-Agency-AutoScribe-Mutuo-Health-Solutions-Subtitled.mp4"></video>
-        </div>
-        <!-- Інші слайди -->
-    </div>
-    <div class="center">
-        <div id="pagination" class="pagination"></div>
-    </div>
+  <button id="sound">Sound</button>
+<div id="slides-container">
+   <div class="slide">
+      <video playsinline muted src="https://dmitro03.github.io/Auto-Form/P1-Harpoon-Agency-AutoScribe-Mutuo-Health-Solutions-Subtitled.mp4"></video>
+   </div>
+   <div class="slide">
+      <video playsinline muted src="https://dmitro03.github.io/Auto-Form/P1-Harpoon-Agency-AutoScribe-Mutuo-Health-Solutions-Subtitled.mp4"></video>
+   </div>
+      <div class="slide">
+      <video playsinline muted src="https://dmitro03.github.io/Auto-Form/P1-Harpoon-Agency-AutoScribe-Mutuo-Health-Solutions-Subtitled.mp4"></video>
+   </div>
+   <!-- Інші слайди -->
 </div>
+</div>
+<div class="center"> <div id="pagination" class="pagination"></div></div>
+<style>
+body {
+    padding: 0;
+    margin: 0;
+}
+
+/* Загальний контейнер для слайдера */
+#slider-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+#sound {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Слайди */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 0;
+}
+
+/* Активний слайд */
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Відео всередині слайдів */
+.slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Контейнер для пагінації */
+#pagination {
+    display: flex;
+    align-items: center;
+    z-index: 10; /* Щоб пагінація була над слайдами */
+    transition: all 300ms ease;
+    gap: 10px;
+    
+}
+.center {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 68px;
+    z-index: 10;
+     transition: all 300ms ease;
+}
+
+/* Кнопки пагінації */
+.pagination-button {
+    min-width: 58px;
+    height: 40px;
+    border: 1px solid #fff;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    align-items: center;
+    transition: all 0.3s ease, all 0.3s ease; /* Додаємо анімацію зміни розміру */
+}
+.pagination-button.active {
+  transform: scale(1.2);
+  margin-left: 5px;
+  margin-right: 5px;
+  
+  
+}
+/* Таймлайн, який буде відображатися лише для активного слайда */
+.timeline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #666; /* Сіра доріжка */
+    display: none; /* Приховано за замовчуванням */
+}
+
+/* Відображення таймлайну для активного слайда */
+.pagination-button.active .timeline {
+    display: block;
+}
+
+/* Прогрес бар всередині таймлайну */
+.timeline-progress {
+    height: 100%;
+    width: 0%;
+    background-color: #fff; /* Білий прогрес бар */
+}
+
+/* Кнопка паузи, яка відображається по центру */
+.pause-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: all 300ms ease;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    clip-path: polygon(0 0, 0 100%, 100% 50%);
+    display: none; /* Приховано за замовчуванням */
+}
+
+/* Відображення кнопки паузи для активного слайда */
+.pagination-button.active .pause-button {
+    display: block;
+}
+
+</style>
 
 <script>
-    const slides = document.querySelectorAll('.slide');
-    const pagination = document.getElementById('pagination');
-    let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const pagination = document.getElementById('pagination');
+let currentSlide = 0;
 
-    // Ініціалізація пагінації
-    slides.forEach((slide, index) => {
-        const btn = document.createElement('button');
-        btn.classList.add('pagination-button');
-        if (index === 0) btn.classList.add('active');
+// Ініціалізація пагінації
+slides.forEach((slide, index) => {
+    const btn = document.createElement('button');
+    btn.classList.add('pagination-button');
+    if (index === 0) btn.classList.add('active');
 
-        // Додаємо кнопку паузи всередині кнопки пагінації
-        const pauseBtn = document.createElement('div');
-        pauseBtn.classList.add('pause-button');
-        btn.appendChild(pauseBtn);
+    // Додаємо кнопку паузи всередині кнопки пагінації
+    const pauseBtn = document.createElement('div');
+    pauseBtn.classList.add('pause-button');
+    btn.appendChild(pauseBtn);
 
-        // Додаємо таймлайн і прогрес бар
-        const timeline = document.createElement('div');
-        timeline.classList.add('timeline');
-        const timelineProgress = document.createElement('div');
-        timelineProgress.classList.add('timeline-progress');
-        timeline.appendChild(timelineProgress);
-        btn.appendChild(timeline);
+    // Додаємо таймлайн і прогрес бар
+    const timeline = document.createElement('div');
+    timeline.classList.add('timeline');
+    const timelineProgress = document.createElement('div');
+    timelineProgress.classList.add('timeline-progress');
+    timeline.appendChild(timelineProgress);
+    btn.appendChild(timeline);
 
-        btn.addEventListener('click', () => {
-            if (btn.classList.contains('active')) {
-                return; // Якщо кнопка вже активна, нічого не відбувається
-            }
-            goToSlide(index);
-        });
-        pagination.appendChild(btn);
-
-        // Додаємо обробник подій для кнопки паузи
-        pauseBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Зупиняємо подальше поширення події (щоб не активувався перехід на слайд)
-            togglePausePlay(index); // Перемикаємо паузу/відтворення
-        });
+    btn.addEventListener('click', () => {
+        if (btn.classList.contains('active')) {
+            return; // Якщо кнопка вже активна, нічого не відбувається
+        }
+        goToSlide(index);
     });
+    pagination.appendChild(btn);
 
-    // Показуємо перший слайд і запускаємо його відео автоматично
+    // Додаємо обробник подій для кнопки паузи
+    pauseBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Зупиняємо подальше поширення події (щоб не активувався перехід на слайд)
+        togglePausePlay(index); // Перемикаємо паузу/відтворення
+    });
+});
+
+// Показуємо перший слайд і запускаємо його відео автоматично
+slides[currentSlide].classList.add('active');
+slides[currentSlide].querySelector('video').play();
+
+// Перемикання слайдів після завершення відео
+slides.forEach((slide, index) => {
+    const video = slide.querySelector('video');
+    video.addEventListener('ended', () => {
+        nextSlide();
+    });
+});
+
+function nextSlide() {
+    const currentVideo = slides[currentSlide].querySelector('video');
+    currentVideo.pause();
+    currentVideo.currentTime = 0;
+
+    slides[currentSlide].classList.remove('active');
+    pagination.children[currentSlide].classList.remove('active');
+
+    const nextIndex = (currentSlide + 1) % slides.length;
+    currentSlide = nextIndex;
+
     slides[currentSlide].classList.add('active');
+    pagination.children[currentSlide].classList.add('active');
     slides[currentSlide].querySelector('video').play();
 
-    // Перемикання слайдів після завершення відео
-    slides.forEach((slide, index) => {
-        const video = slide.querySelector('video');
-        video.addEventListener('ended', () => {
-            nextSlide();
-        });
-    });
+    shiftPagination(); // Зміщуємо пагінацію вперед
+}
 
-    function nextSlide() {
-        const currentVideo = slides[currentSlide].querySelector('video');
-        currentVideo.pause();
-        currentVideo.currentTime = 0;
+function prevSlide() {
+    const currentVideo = slides[currentSlide].querySelector('video');
+    currentVideo.pause();
+    currentVideo.currentTime = 0;
 
-        slides[currentSlide].classList.remove('active');
-        pagination.children[currentSlide].classList.remove('active');
+    slides[currentSlide].classList.remove('active');
+    pagination.children[currentSlide].classList.remove('active');
 
-        const nextIndex = (currentSlide + 1) % slides.length;
-        currentSlide = nextIndex;
+    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+    currentSlide = prevIndex;
 
-        slides[currentSlide].classList.add('active');
-        pagination.children[currentSlide].classList.add('active');
-        slides[currentSlide].querySelector('video').play();
+    slides[currentSlide].classList.add('active');
+    pagination.children[currentSlide].classList.add('active');
+    slides[currentSlide].querySelector('video').play();
 
-        shiftPagination(); // Зміщуємо пагінацію вперед
+    shiftPagination(); // Зміщуємо пагінацію назад
+}
+
+function goToSlide(index) {
+    const currentVideo = slides[currentSlide].querySelector('video');
+    currentVideo.pause();
+    currentVideo.currentTime = 0;
+
+    slides[currentSlide].classList.remove('active');
+    pagination.children[currentSlide].classList.remove('active');
+
+    currentSlide = index;
+
+    slides[currentSlide].classList.add('active');
+    pagination.children[currentSlide].classList.add('active');
+    slides[currentSlide].querySelector('video').play();
+
+    shiftPagination(); // Зміщуємо пагінацію
+}
+
+// Перемикаємо паузу/відтворення для поточного слайда
+function togglePausePlay(index) {
+    const video = slides[index].querySelector('video');
+    if (video.paused) {
+        video.play();
+    } else {
+        video.pause();
     }
+}
 
-    function prevSlide() {
-        const currentVideo = slides[currentSlide].querySelector('video');
-        currentVideo.pause();
-        currentVideo.currentTime = 0;
-
-        slides[currentSlide].classList.remove('active');
-        pagination.children[currentSlide].classList.remove('active');
-
-        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
-        currentSlide = prevIndex;
-
-        slides[currentSlide].classList.add('active');
-        pagination.children[currentSlide].classList.add('active');
-        slides[currentSlide].querySelector('video').play();
-
-        shiftPagination(); // Зміщуємо пагінацію назад
-    }
-
-    function goToSlide(index) {
-        const currentVideo = slides[currentSlide].querySelector('video');
-        currentVideo.pause();
-        currentVideo.currentTime = 0;
-
-        slides[currentSlide].classList.remove('active');
-        pagination.children[currentSlide].classList.remove('active');
-
-        currentSlide = index;
-
-        slides[currentSlide].classList.add('active');
-        pagination.children[currentSlide].classList.add('active');
-        slides[currentSlide].querySelector('video').play();
-
-        shiftPagination(); // Зміщуємо пагінацію
-    }
-
-    function shiftPagination() {
-        const shift = currentSlide * 68;
-        pagination.style.transform = `translateX(-${shift}px)`;
-    }
-
-    function togglePausePlay(index) {
-        const video = slides[index].querySelector('video');
-        if (video.paused) {
-            video.play();
-        } else {
-            video.pause();
-        }
-    }
-
-    document.getElementById('sound').addEventListener('click', function() {
-        const video = slides[currentSlide].querySelector('video');
-        if (video.muted) {
-            video.muted = false;
-        } else {
-            video.muted = true;
+// Відображення таймлайну відео тільки для активного слайда
+slides.forEach((slide, index) => {
+    const video = slide.querySelector('video');
+    const timelineProgress = pagination.children[index].querySelector('.timeline-progress');
+    video.addEventListener('timeupdate', () => {
+        if (index === currentSlide) {
+            const progress = (video.currentTime / video.duration) * 100;
+            timelineProgress.style.width = `${progress}%`;
         }
     });
+});
+
+function shiftPagination() {
+    const itemWidth = 68; // Ширина кнопки пагінації
+    const offset = currentSlide * itemWidth;
+    
+    // Встановлюємо відступ 0 для першого слайда
+    pagination.style.transform = `translateX(${currentSlide === 0 ? 0 : -offset}px)`;
+}
+// Знаходимо кнопку з id "sound"
+const soundButton = document.getElementById('sound');
+
+// Додаємо обробник події на клік
+soundButton.addEventListener('click', () => {
+    const videos = document.querySelectorAll('video');
+
+    // Перемикаємо звук для всіх відео
+    videos.forEach(video => {
+        video.muted = !video.muted;
+    });
+
+    // Можна також змінювати текст або стиль кнопки, щоб показувати, чи звук ввімкнено
+    if (videos[0].muted) {
+        soundButton.textContent = 'Включити звук';
+    } else {
+        soundButton.textContent = 'Вимкнути звук';
+    }
+});
+
 </script>
-</body>
+
 </html>
