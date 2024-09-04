@@ -97,6 +97,8 @@ body {
     aspect-ratio: 1 / 1;
     align-items: center;
     transition: all 0.3s ease, all 0.3s ease; /* Додаємо анімацію зміни розміру */
+    backface-visibility: hidden;
+    will-change: transform;
 }
 .pagination-button.active {
   transform: scale(1.2);
